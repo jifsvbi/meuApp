@@ -35,3 +35,28 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import "@ionic/angular/css/palettes/dark.system.css";
+
+:root {
+--hud-bg: #041024; // deep blue
+--neon-cyan: #00f0ff;
+--term-yellow: #f3f07a;
+--term-green: #8ff08f;
+}
+
+
+body {
+background: linear-gradient(180deg, #001219 0%, #041024 100%);
+font-family: 'Courier New', monospace;
+}
+
+
+// efeito CRT / glow
+.glow {
+text-shadow: 0 0 8px rgba(0,240,255,0.6), 0 0 24px rgba(243,240,122,0.08);
+}
+
+
+.scanline {
+background-image: linear-gradient(transparent 92%, rgba(255,255,255,0.02) 93%);
+background-size: 100% 4px;
+}

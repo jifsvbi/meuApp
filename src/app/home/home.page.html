@@ -1,20 +1,32 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
+<ion-header>
+<ion-toolbar class="toolbar-hud">
+<ion-title>Diário de Reconstrução — Faísca</ion-title>
+<ion-buttons slot="end">
+<ion-button (click)="openNew()" class="btn-hud">Novo</ion-button>
+</ion-buttons>
+</ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+<ion-content class="content-hud">
+<!-- HUD filters -->
+<div class="hud-filters">
+<div class="filter" [class.active]="filter==='all'" (click)="filter='all'">ALL</div>
+<div class="filter recurso" [class.active]="filter==='recurso'" (click)="filter='recurso'">🔧</div>
+<div class="filter local" [class.active]="filter==='local'" (click)="filter='local'">📍</div>
+<div class="filter perigo" [class.active]="filter==='perigo'" (click)="filter='perigo'">⚠️</div>
+</div>
+
+
+<!-- Lista -->
+<ion-list>
+<ion-item *ngFor="let e of filtered()" (click)="openEdit(e)" class="item-hud">
+<ion-label>
+<h2>{{e.titulo}}</h2>
+<p>{{e.descricao}}</p>
+<small>{{e.dataCriacao | date:'short'}}</small>
+</ion-label>
+<ion-button fill="clear" slot="end" (click)="$event.stopPropagation(); remove(e.id)">Excluir</ion-button>
+</ion-item>
+</ion-list>
 </ion-content>

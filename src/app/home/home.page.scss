@@ -1,27 +1,28 @@
-#container {
-  text-align: center;
+.hud-filters {
+display:flex; gap:12px; padding:12px; justify-content:center;
+}
+.filter {
+padding:8px 12px; border:1px solid rgba(255,255,255,0.06); border-radius:6px; cursor:pointer;
+transition: all 180ms ease;
+&.active { box-shadow: 0 0 20px rgba(0,240,255,0.16); transform:translateY(-2px); }
+}
+.filter.recurso { color: var(--neon-cyan); }
+.filter.local { color: var(--term-green); }
+.filter.perigo { color: var(--term-yellow); }
 
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+
+.item-hud {
+border-left: 3px solid rgba(0,240,255,0.12);
+&:hover { background: rgba(255,255,255,0.01); }
 }
 
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
+
+// scanner animation
+@keyframes scanner {
+0% { background-position: 0 0; }
+100% { background-position: 0 100%; }
 }
-
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-
-  color: #8c8c8c;
-
-  margin: 0;
-}
-
-#container a {
-  text-decoration: none;
+.content-hud { position:relative; }
+.content-hud::before {
+content:""; pointer-events:none; position:absolute; inset:0; background:linear-gradient(0deg, rgba(255,255,255,0.01), transparent); mix-blend-mode:screen; animation:scanner 6s linear infinite;
 }

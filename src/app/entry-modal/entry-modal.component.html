@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      {{ mode === 'create' ? 'Nova Entrada' : 'Editar Entrada' }}
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="close()">Fechar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-item>
+    <ion-label position="stacked">Título</ion-label>
+    <ion-input [(ngModel)]="tempEntry.titulo"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Descrição</ion-label>
+    <ion-textarea [(ngModel)]="tempEntry.descricao"></ion-textarea>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="stacked">Tipo</ion-label>
+    <ion-select [(ngModel)]="tempEntry.tipo">
+      <ion-select-option value="recurso">Recurso</ion-select-option>
+      <ion-select-option value="local">Local</ion-select-option>
+      <ion-select-option value="perigo">Perigo</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ion-button expand="block" class="ion-margin-top" (click)="save()">
+    Salvar
+  </ion-button>
+
+</ion-content>
